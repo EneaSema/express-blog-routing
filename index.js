@@ -6,8 +6,6 @@ const port = 3000;
 
 const postRouter = require("./routers/posts.js");
 
-app.use(express.static("public"));
-
 app.get("/", (req, res) => {
   console.log("Richiesta arrivata New");
 
@@ -15,6 +13,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/posts", postRouter);
+app.use(express.static("public"));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

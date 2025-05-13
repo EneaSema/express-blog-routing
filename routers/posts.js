@@ -37,7 +37,10 @@ const posts = [
 // Risposta alla richiesta di lettura di tutti i post
 
 post.get("/", (req, res) => {
-  res.send("Post totali");
+  res.json({
+    description: "Post totali",
+    data: posts,
+  });
 });
 
 // Risposta alla richiesta di lettura di un post specifico
@@ -45,7 +48,10 @@ post.get("/", (req, res) => {
 post.get("/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const post = posts.find((currentPost) => currentPost.id === id);
-  res.send("Ecco il post scelto:" + id);
+  res.json({
+    description: "Ecco il post scelto:" + id,
+    data: posts[id],
+  });
 });
 
 // Risposta alla richiesta di creazione di un post
